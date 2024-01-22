@@ -1,5 +1,7 @@
 var express = require('express');
 var router = express.Router();
+const cors = require('cors');  // corsミドルウェアを追加
+require('dotenv').config();
 
 // // レスポンスのデータ（ノート全件）
 // const responseObjectDataAll = {
@@ -32,7 +34,7 @@ var router = express.Router();
 // 第8回
 // 接続情報を設定
 const { MongoClient } = require("mongodb");
-const uri = "**************";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 router.get('/', async (req, res) => {
